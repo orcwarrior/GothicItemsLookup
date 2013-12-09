@@ -32,7 +32,7 @@ namespace GothicItemsLookup.Scanners
 
         public string instance { get; private set; }
         public itemFields fields { get; private set; }
-        public Tuple<uint, uint> blockOfCode { get; private set; }
+        //public Tuple<uint, uint> blockOfCode { get; private set; }
         public string srcFilePath { get; private set; }
 
         // instanceFilter there is actually regex filter
@@ -52,7 +52,7 @@ namespace GothicItemsLookup.Scanners
             else { instance = INST_INCORRECT; return; }
             // There I can read attribs & stuff
             _collectFieldsTillEndOfDeclarationBlock(ref stream);
-            blockOfCode = new Tuple<uint, uint>(firstLineNr, stream.currentLine);
+            //blockOfCode = new Tuple<uint, uint>(firstLineNr, stream.currentLine);
         }
         public override string ToString()
         {

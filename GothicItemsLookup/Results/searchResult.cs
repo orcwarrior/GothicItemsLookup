@@ -102,8 +102,8 @@ namespace GothicItemsLookup.Results
     }
     class zenSearchResult : searchResult
     {
-        public Tuple<int, int, int> pos { get; private set; }
-        public zenSearchResult(string inst,SearchResultSource src, int iAmnt, findResultType typ, Tuple<int, int, int> p)
+        public int[] pos { get; private set; }
+        public zenSearchResult(string inst,SearchResultSource src, int iAmnt, findResultType typ, int[] p)
             : base(inst,src, iAmnt,typ)
         {
             type = typ;
@@ -121,7 +121,7 @@ namespace GothicItemsLookup.Results
             string res="";
             res += "[" + amount + "]";
             res += type.getName();
-            res += " w pozycji("+pos.Item1+","+pos.Item2+","+pos.Item3+") ";
+            res += " w pozycji("+pos[0]+","+pos[1]+","+pos[2]+") ";
             string filename = GothicItemsLookup.Utils.ExctractFilename(src.file);
             res += filename;
             return res;
@@ -144,9 +144,9 @@ namespace GothicItemsLookup.Results
             {instance,
              amount.ToString(),
              type.getName(),
-             pos.Item1.ToString(),
-             pos.Item2.ToString(),
-             pos.Item3.ToString(),
+             pos[0].ToString(),
+             pos[1].ToString(),
+             pos[2].ToString(),
              src.file,
              src.line.ToString(),
              src.codeLine
@@ -169,9 +169,9 @@ namespace GothicItemsLookup.Results
             string[] posSplit = scanner.objPosStr.Split(' ');
             // Zeby przyspieszyć troche caly proces, parsujemy pozycje dopiero tutaj, gdy jest pewność
             // ze item ma być dodany. (Dzięki Split, pozbywamy sie cyfr za przecinkiem)
-            Tuple<int, int, int> pos = new Tuple<int, int, int>(int.Parse(posSplit[0].Split('.')[0]),
+            int[] pos = new int[]{int.Parse(posSplit[0].Split('.')[0]),
                                                                 int.Parse(posSplit[1].Split('.')[0]),
-                                                                int.Parse(posSplit[2].Split('.')[0]));
+                                                                int.Parse(posSplit[2].Split('.')[0])};
             return new zenSearchResult(item.instance,src, item.amount,item.resultType , pos);
         
         }
