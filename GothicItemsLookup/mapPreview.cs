@@ -41,7 +41,7 @@ namespace GothicItemsLookup
                     if (zenRes.src.file.IndexOf("WORLD.ZEN") >= 0)
                     {
                         Point pos = new Point(zenRes.pos[0] / mapPtsToPX.Height, // x (on map))
-                                              zenRes.pos[1] / mapPtsToPX.Width); // y (on map)
+                                              zenRes.pos[2] / mapPtsToPX.Width); // y (on map)
                         pos.Offset(mapCenter);
                         Brush b = new SolidBrush(zenRes.myColor);
                         Pen p = new Pen(b, 4 + Math.Min(zenRes.amount / 2, 15) +     // zwieksz pkt zaleznie od il. itemów

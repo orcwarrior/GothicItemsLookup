@@ -52,7 +52,7 @@ namespace GothicItemsLookup.parsers
             callProgressUpdate(progressPart[0] / progressPart[1], progressWhole[0] / progressWhole[1], "...znaleziono początek Vobtree");        
 
             parsingFileFinished = false;
-            long divPosition = (sr.BaseStream.Length - strLoc)*2 / 5 + strLoc;
+            long divPosition =  (long)( (sr.BaseStream.Length - strLoc)*1.5 / 5.0) + strLoc;
             Thread t1 = new Thread(() => _parseFileStream1(path, strLoc, divPosition));
             Thread t2 = new Thread(() => _parseFileStream2(path, divPosition, sr.BaseStream.Length));
 

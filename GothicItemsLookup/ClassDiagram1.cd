@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GothicItemsLookup.ColorsConst" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABgAAAEAAAAQAAAAgAACAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ColorsConst.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.FileEntry" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAIAAQEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FileEntry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.lookupResults" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAABEIAAAAAAAAAAAEAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>lookupResults.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GothicItemsLookup.Form_Main" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQIxAiAiIPBARRwKAUSDSAIicxIErQRRikASMCZAUOk=</HashCode>
+      <FileName>Main_Form\Form.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.mapPreview" Collapsed="true">
+    <Position X="17.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAACACAAAAAACKAEACAACEAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>mapPreview.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Program" Collapsed="true">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Resource1" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.resultMoreInfos_Form" Collapsed="true">
+    <Position X="15.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAACAAAAGAAAAQAAAAIAAAAAAAAA=</HashCode>
+      <FileName>resultMoreInfos_Form.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.stringFilter" Collapsed="true">
+    <Position X="12" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAASAAAAAAAAAAAAAAAAAAAACAAAAQAAAAAAg=</HashCode>
+      <FileName>stringFilter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Utils" Collapsed="true">
+    <Position X="13.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACgAAAAABAAAAAAAwAAACAAAAAAAAA=</HashCode>
+      <FileName>Utils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.parsers.genericFileParser" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAABAAAAAAAAAAI=</HashCode>
+      <FileName>parsers\genericFileParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.parsers.itemFileParser" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAQBAAAAAAAAAAAAAAAAIAAAIAAAAAAAAA=</HashCode>
+      <FileName>parsers\itemFileParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.parsers.scriptFilesParser" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAkAAAAAAgAQAAAAAAAAQBAAAEgIAAAgAAAAAAAAAA=</HashCode>
+      <FileName>parsers\scriptFileParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.parsers.zenFileParser" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgCgAAAQAABQBAAAABAAAAAAAAAAAAAAIACgAAgAAAA=</HashCode>
+      <FileName>parsers\zenFileParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Properties.Resources" Collapsed="true">
+    <Position X="13.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Properties.Settings" Collapsed="true">
+    <Position X="10.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAIAAAAAABABEAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Scanners.findResultType_Extension" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Results\findResultType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Scanners.scannedItem" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAABAggAAAAAAAAAAABA=</HashCode>
+      <FileName>Scanners\IItemScaner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Scanners.scriptScannedItem" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAEAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Scanners\IItemScaner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Scanners.scriptScanner" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACAAAAAAQABAEAEwAUAAAAAAQACAAQAAEAgAQIAAI=</HashCode>
+      <FileName>Scanners\scriptScanner.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GothicItemsLookup.Scanners.itemFields" Collapsed="true">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scanners\searchedItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Scanners.searchedItem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAEAAAAAAAwAQUAAAAAAAAAABAAAAAACAAgCAAAAA=</HashCode>
+      <FileName>Scanners\searchedItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GothicItemsLookup.Scanners.zenObjScanner" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAADADAAAAABAgIAAAAAAAABgAEAAAAAAEQkAAAIAA=</HashCode>
+      <FileName>Scanners\zenObjScanner.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GothicItemsLookup.Results.SearchResultSource" Collapsed="true">
+    <Position X="15.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAABAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Results\searchResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Results.searchResult" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABBggAAgAAAACAAAAA=</HashCode>
+      <FileName>Results\searchResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Results.scriptSearchResult" Collapsed="true">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEEAgAAAAAAAAAAAAAAgAAAAAQAAAg=</HashCode>
+      <FileName>Results\searchResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Results.zenSearchResult" Collapsed="true">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAIAAAAAAAAAAgAAAAAAAAAg=</HashCode>
+      <FileName>Results\searchResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Results.searchResultFactory" Collapsed="true">
+    <Position X="13.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAgAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Results\searchResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Results.searchResultSummary" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAABAEAAAgAAAAAABAgAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Scanners\searchResultSummary.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GothicItemsLookup.Scanners.Utils.itemAddingFunc_Param_Extension" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Scanners\Utils\itemAddingFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Scanners.Utils.itemAddingFunc" Collapsed="true">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAEAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Scanners\Utils\itemAddingFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Scanners.Utils.itemAddingFunc_Extension" Collapsed="true">
+    <Position X="10.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Scanners\Utils\itemAddingFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.Scanners.Utils.scriptBlock" Collapsed="true">
+    <Position X="17.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAACAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scanners\Utils\ScriptBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.streamReaders.genericStreamReader" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAgAAAAAEAAAAAAAAAAAIA=</HashCode>
+      <FileName>streamReaders\genericStreamReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.streamReaders.scriptStreamReader" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEBAAAAABAAAAAAAAAAAAAAAAQAACAAEEAAAAAAABEA=</HashCode>
+      <FileName>streamReaders\scriptStreamReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothicItemsLookup.streamReaders.zenStreamReader" Collapsed="true">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>streamReaders\zenStreamReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="GothicItemsLookup.Scanners.IItemScaner" Collapsed="true">
+    <Position X="10.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scanners\IItemScaner.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="GothicItemsLookup.Scanners.findResultType" Collapsed="true">
+    <Position X="13.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGABAAAAAAAAAAAAAAAAAAFAAAAAAAAAQAQAAAAAA=</HashCode>
+      <FileName>Results\findResultType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GothicItemsLookup.Scanners.Utils.eItemFunc_Param" Collapsed="true">
+    <Position X="12" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAACAAAAABCAAAAAAAAAgAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Scanners\Utils\itemAddingFunc.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GothicItemsLookup.Scanners.Utils.eBlockType" Collapsed="true">
+    <Position X="10.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAQAAAEAAAAQAAAAAAA=</HashCode>
+      <FileName>Scanners\Utils\ScriptBlock.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="GothicItemsLookup.parsers.updateProgress" Collapsed="true">
+    <Position X="10.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAQAAAA=</HashCode>
+      <FileName>parsers\genericFileParser.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -96,15 +96,22 @@ namespace GothicItemsLookup
             BackgroundWorker worker = sender as BackgroundWorker;
             lookupResults.Create(_foundItems);
             // Scripts Lookup:
-            scriptFilesParser.Parse(sScripts_GothicSRC.Text, currentFunctions);
-            while (!scriptFilesParser.jobDone) System.Threading.Thread.Sleep(250);
+            if (!sScripts_GothicSRC.Text.Equals("")
+            && System.IO.File.Exists(sScripts_GothicSRC.Text))
+            {
+                scriptFilesParser.Parse(sScripts_GothicSRC.Text, currentFunctions);
+                while (!scriptFilesParser.jobDone) System.Threading.Thread.Sleep(250);
+            }
             // Worlds Lookup:
-            List<string> filepaths = new List<string>();
-            foreach (FileEntry item in sWorld_worldsList.Items)
-                filepaths.Add(item.fullpath);
-            zenFileParser.worker = worker;
-            zenFileParser.Parse(filepaths);
-            while (!zenFileParser.jobDone) System.Threading.Thread.Sleep(250);
+            if (sWorld_worldsList.Items.Count > 0)
+            {
+                List<string> filepaths = new List<string>();
+                foreach (FileEntry item in sWorld_worldsList.Items)
+                    filepaths.Add(item.fullpath);
+                zenFileParser.worker = worker;
+                zenFileParser.Parse(filepaths);
+                while (!zenFileParser.jobDone || !scriptFilesParser.jobDone) System.Threading.Thread.Sleep(250);
+            }
         }
         // Called when Loaded Items Scripts, Exctracted Items, Worlds or gothic.src changed:
         private void _testIfCanRunItemsSearch()

@@ -80,8 +80,6 @@
             this.tab_srchItems.SuspendLayout();
             this.sItems_FilterGroup.SuspendLayout();
             this.tab_srchScriptsAndWorlds.SuspendLayout();
-            //((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -106,11 +104,13 @@
             // 
             this.toolStrip_ProgressWhole.Name = "toolStrip_ProgressWhole";
             this.toolStrip_ProgressWhole.Size = new System.Drawing.Size(100, 16);
+            this.toolStrip_ProgressWhole.Visible = false;
             // 
             // toolStrip_ProgressBarPartial
             // 
             this.toolStrip_ProgressBarPartial.Name = "toolStrip_ProgressBarPartial";
             this.toolStrip_ProgressBarPartial.Size = new System.Drawing.Size(100, 16);
+            this.toolStrip_ProgressBarPartial.Visible = false;
             // 
             // toolStrip_Status
             // 
@@ -583,7 +583,6 @@
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
-            //((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tab_srchResults.ResumeLayout(false);
             this.singleResultsContext.ResumeLayout(false);
