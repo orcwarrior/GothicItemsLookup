@@ -36,6 +36,10 @@ namespace GothicItemsLookup.Results
                                            res.instance,
                                            newID
                 ));
+                // later we have no acess so change ID to new one now
+                // (so we be able to do multiple IDs changes even if info in form
+                // isn't updated)
+                res.instance = newID;
             }
             repWorker.doJobs();
         }

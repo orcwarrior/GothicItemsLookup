@@ -61,6 +61,7 @@
             this.sScripts_GothicSRC = new System.Windows.Forms.TextBox();
             this.sScripts_label1 = new System.Windows.Forms.Label();
             this.tab_srchResults = new System.Windows.Forms.TabPage();
+            this.sResults_labFiltering = new System.Windows.Forms.Label();
             this.sResults_Combo_resFilter = new System.Windows.Forms.ComboBox();
             this.btn_showOnMap = new System.Windows.Forms.Button();
             this.results_Details = new System.Windows.Forms.ListBox();
@@ -77,13 +78,11 @@
             this.orcwarrior2013ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectFilesGeneric = new System.Windows.Forms.OpenFileDialog();
             this.btn_SearchForItems = new System.Windows.Forms.Button();
-            this.sResults_labFiltering = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tab_srchItems.SuspendLayout();
             this.sItems_FilterGroup.SuspendLayout();
             this.tab_srchScriptsAndWorlds.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -425,6 +424,15 @@
             this.tab_srchResults.TabIndex = 3;
             this.tab_srchResults.Text = "Wyniki";
             // 
+            // sResults_labFiltering
+            // 
+            this.sResults_labFiltering.AutoSize = true;
+            this.sResults_labFiltering.Location = new System.Drawing.Point(152, 331);
+            this.sResults_labFiltering.Name = "sResults_labFiltering";
+            this.sResults_labFiltering.Size = new System.Drawing.Size(60, 13);
+            this.sResults_labFiltering.TabIndex = 12;
+            this.sResults_labFiltering.Text = "Filtrowanie:";
+            // 
             // sResults_Combo_resFilter
             // 
             this.sResults_Combo_resFilter.FormattingEnabled = true;
@@ -588,15 +596,6 @@
             this.btn_SearchForItems.UseVisualStyleBackColor = true;
             this.btn_SearchForItems.Click += new System.EventHandler(this.btn_SearchForItems_Click);
             // 
-            // sResults_labFiltering
-            // 
-            this.sResults_labFiltering.AutoSize = true;
-            this.sResults_labFiltering.Location = new System.Drawing.Point(152, 331);
-            this.sResults_labFiltering.Name = "sResults_labFiltering";
-            this.sResults_labFiltering.Size = new System.Drawing.Size(60, 13);
-            this.sResults_labFiltering.TabIndex = 12;
-            this.sResults_labFiltering.Text = "Filtrowanie:";
-            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -623,7 +622,6 @@
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tab_srchResults.ResumeLayout(false);
             this.tab_srchResults.PerformLayout();

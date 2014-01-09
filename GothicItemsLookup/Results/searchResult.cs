@@ -19,14 +19,17 @@ namespace GothicItemsLookup.Results
     }
     abstract public class searchResult
     {
-        public string instance { get; private set; } // Quite big redundancy but it's need for MoreInfos method.
+        // set accesor - public -> so we cant change ID of item multiple times (without update)
+        public bool instanceUpdated { get { return _baseInstance != instance; } }
+        private string _baseInstance;
+        public string instance { get; set; } // Quite big redundancy but it's need for MoreInfos method.
         public findResultType type { get; protected set; }
         public SearchResultSource src {get; protected set;}
         public int amount { get; protected set; }
         public System.Drawing.Color myColor { get; protected set; }
 
         public searchResult(string inst,SearchResultSource src, int iAmnt,findResultType typ)
-        { instance = inst; this.src = src; amount = iAmnt; type = typ; }
+        { instance = _baseInstance = inst; this.src = src; amount = iAmnt; type = typ; }
 
         public abstract Form MoreInfos();
     }

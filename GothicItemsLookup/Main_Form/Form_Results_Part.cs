@@ -55,7 +55,10 @@ namespace GothicItemsLookup
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
                 BG = System.Drawing.Color.FromArgb(BG.R - 40, BG.G - 40, BG.B - 40);
             e.Graphics.FillRectangle(new SolidBrush(BG), e.Bounds);
-            e.Graphics.DrawString(cur.ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds.Location);
+            if(cur.instanceUpdated) // Pogrub czcionke jeśli istancja była zmieniona
+                e.Graphics.DrawString(cur.ToString(), new Font(e.Font.FontFamily,e.Font.Size,FontStyle.Bold), new SolidBrush(e.ForeColor), e.Bounds.Location);
+            else
+                e.Graphics.DrawString(cur.ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds.Location);
         }
 
 

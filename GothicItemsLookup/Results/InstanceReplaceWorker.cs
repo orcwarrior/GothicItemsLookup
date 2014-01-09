@@ -27,8 +27,7 @@ namespace GothicItemsLookup.Results
                 kvp.Value.Sort();
                 //do actual job: using (FileStream stream = File.OpenRead("C:\\file1.txt"))
                 StreamReader reader = new StreamReader(kvp.Key);
-                StreamWriter writer = new StreamWriter(kvp.Key + ".bak");
-
+                StreamWriter writer = new StreamWriter(kvp.Key + ".bak",false, reader.CurrentEncoding);
                 const int maxBytes = 1024;
                 int readCnt = maxBytes;
                 char[] buffer = new char[readCnt];
