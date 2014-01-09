@@ -99,6 +99,9 @@ namespace GothicItemsLookup
                 return;
 
             resultsManager.deleteResultsFiles(results_Details.SelectedItems);
+            // BUGFIX
+            while (results_Details.SelectedItems.Count > 0)
+                results_Details.Items.Remove(results_Details.SelectedItem);
         }
         // Context: Zmiana instancji w zaznaczonych wynikach
         private void singleResCont_ChangeInstance_Click(object sender, EventArgs e)

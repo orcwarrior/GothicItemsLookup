@@ -16,14 +16,15 @@ namespace GothicItemsLookup.Results
     {
         static public void deleteResultsFiles(ListBox.SelectedObjectCollection inResults)
         {
-            if (inResults == null) return;
+            List<searchResult> toRemoveList = new List<searchResult>();
+            if (inResults == null || inResults.Count<=0) return;
             foreach (searchResult res in inResults)
             {
                 try
                 {
                     new LogMsg("Usuwanie pliku: " + res.src.file, eDebugMsgLvl.INFO);
+                    toRemoveList.Add(res);
                     System.IO.File.Delete(res.src.file);
-                    inResults.Remove(res);
                 }
                 finally { }
             }
