@@ -35,5 +35,22 @@ namespace GothicItemsLookup.Results
         {
             return "[" + amount + "] " + instance;
         }
+        internal int getFilteredAmount(Scanners.findResultType? filter)
+        {
+            int amount = 0;
+            if (filter == null)
+                return this.amount;
+            else
+                foreach (searchResult res in entries.Where(o => o.type == filter))
+                    amount += res.amount;
+            return amount;
+        }
+        internal string ToString(Scanners.findResultType? sResultsDetailsFilter)
+        {
+            if (sResultsDetailsFilter == null)
+                return ToString();
+            else 
+                return "[" + getFilteredAmount(sResultsDetailsFilter) + "] " + instance;
+        }
     }
 }

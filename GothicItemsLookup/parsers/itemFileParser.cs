@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using GothicItemsLookup.streamReaders;
 using GothicItemsLookup.Scanners;
+using LogSys;
 
 namespace GothicItemsLookup.parsers
 {
@@ -16,11 +17,14 @@ namespace GothicItemsLookup.parsers
         static private double[] progress;
         static public ICollection<searchedItem> Parse(ICollection<string> filePaths, stringFilter filter)
         {
+
+            new LogMsg("Items-Scipt-Extract: \titemFileParser started!", eDebugMsgLvl.INFO);
             progress = new double[]{ 0, (double)filePaths.Count };
             List<searchedItem> list = new List<searchedItem>();
             _filter = filter; // convert wildcard filter to regex and store it
             foreach (string file in filePaths)
             {
+                new LogMsg("Items-Scipt-Extract: \tParsing file: "+Utils.ExctractFilename(file), eDebugMsgLvl.INFO);
                 callProgressUpdate(-1, progress[0]++ / progress[1], "Parsuje: " + file);
                 curFile = file;
                 list.AddRange(_parseFile(file));

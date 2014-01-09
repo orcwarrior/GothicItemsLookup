@@ -61,25 +61,29 @@
             this.sScripts_GothicSRC = new System.Windows.Forms.TextBox();
             this.sScripts_label1 = new System.Windows.Forms.Label();
             this.tab_srchResults = new System.Windows.Forms.TabPage();
-            this.sResults_Combo_DetailsFilter = new System.Windows.Forms.ComboBox();
+            this.sResults_Combo_resFilter = new System.Windows.Forms.ComboBox();
             this.btn_showOnMap = new System.Windows.Forms.Button();
             this.results_Details = new System.Windows.Forms.ListBox();
             this.singleResultsContext = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.singleResCont_Run = new System.Windows.Forms.ToolStripMenuItem();
             this.singleResCont_MoreInfos = new System.Windows.Forms.ToolStripMenuItem();
+            this.singleResCont_Delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.singleResCont_ChangeInstance = new System.Windows.Forms.ToolStripMenuItem();
             this.results_Summary = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wczytajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.orcwarriorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.orcwarrior2013ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectFilesGeneric = new System.Windows.Forms.OpenFileDialog();
             this.btn_SearchForItems = new System.Windows.Forms.Button();
+            this.sResults_labFiltering = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tab_srchItems.SuspendLayout();
             this.sItems_FilterGroup.SuspendLayout();
             this.tab_srchScriptsAndWorlds.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -410,7 +414,8 @@
             // tab_srchResults
             // 
             this.tab_srchResults.BackColor = System.Drawing.Color.Transparent;
-            this.tab_srchResults.Controls.Add(this.sResults_Combo_DetailsFilter);
+            this.tab_srchResults.Controls.Add(this.sResults_labFiltering);
+            this.tab_srchResults.Controls.Add(this.sResults_Combo_resFilter);
             this.tab_srchResults.Controls.Add(this.btn_showOnMap);
             this.tab_srchResults.Controls.Add(this.results_Details);
             this.tab_srchResults.Controls.Add(this.results_Summary);
@@ -420,14 +425,14 @@
             this.tab_srchResults.TabIndex = 3;
             this.tab_srchResults.Text = "Wyniki";
             // 
-            // sResults_Combo_DetailsFilter
+            // sResults_Combo_resFilter
             // 
-            this.sResults_Combo_DetailsFilter.FormattingEnabled = true;
-            this.sResults_Combo_DetailsFilter.Location = new System.Drawing.Point(142, 329);
-            this.sResults_Combo_DetailsFilter.Name = "sResults_Combo_DetailsFilter";
-            this.sResults_Combo_DetailsFilter.Size = new System.Drawing.Size(150, 21);
-            this.sResults_Combo_DetailsFilter.TabIndex = 11;
-            this.sResults_Combo_DetailsFilter.SelectedIndexChanged += new System.EventHandler(this.sResults_Combo_DetailsFilter_SelectedIndexChanged);
+            this.sResults_Combo_resFilter.FormattingEnabled = true;
+            this.sResults_Combo_resFilter.Location = new System.Drawing.Point(218, 328);
+            this.sResults_Combo_resFilter.Name = "sResults_Combo_resFilter";
+            this.sResults_Combo_resFilter.Size = new System.Drawing.Size(150, 21);
+            this.sResults_Combo_resFilter.TabIndex = 11;
+            this.sResults_Combo_resFilter.SelectedIndexChanged += new System.EventHandler(this.sResults_Combo_resFilter_SelectedIndexChanged);
             // 
             // btn_showOnMap
             // 
@@ -457,9 +462,11 @@
             // 
             this.singleResultsContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.singleResCont_Run,
-            this.singleResCont_MoreInfos});
+            this.singleResCont_MoreInfos,
+            this.singleResCont_Delete,
+            this.singleResCont_ChangeInstance});
             this.singleResultsContext.Name = "singleResultsContext";
-            this.singleResultsContext.Size = new System.Drawing.Size(240, 48);
+            this.singleResultsContext.Size = new System.Drawing.Size(273, 92);
             // 
             // singleResCont_Run
             // 
@@ -468,7 +475,7 @@
             this.singleResCont_Run.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.singleResCont_Run.Name = "singleResCont_Run";
             this.singleResCont_Run.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.singleResCont_Run.Size = new System.Drawing.Size(239, 22);
+            this.singleResCont_Run.Size = new System.Drawing.Size(272, 22);
             this.singleResCont_Run.Text = "Uruchom plik zródłowy";
             this.singleResCont_Run.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.singleResCont_Run.Click += new System.EventHandler(this.singleResCont_Run_Click);
@@ -478,9 +485,33 @@
             this.singleResCont_MoreInfos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.singleResCont_MoreInfos.Name = "singleResCont_MoreInfos";
             this.singleResCont_MoreInfos.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.singleResCont_MoreInfos.Size = new System.Drawing.Size(239, 22);
+            this.singleResCont_MoreInfos.Size = new System.Drawing.Size(272, 22);
             this.singleResCont_MoreInfos.Text = "Więcej info...";
             this.singleResCont_MoreInfos.Click += new System.EventHandler(this.singleResCont_MoreInfos_Click);
+            // 
+            // singleResCont_Delete
+            // 
+            this.singleResCont_Delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.singleResCont_Delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.singleResCont_Delete.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.singleResCont_Delete.Name = "singleResCont_Delete";
+            this.singleResCont_Delete.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.singleResCont_Delete.Size = new System.Drawing.Size(272, 22);
+            this.singleResCont_Delete.Text = "Usuń plik źródłowy";
+            this.singleResCont_Delete.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.singleResCont_Delete.Click += new System.EventHandler(this.singleResCont_Delete_Click);
+            // 
+            // singleResCont_ChangeInstance
+            // 
+            this.singleResCont_ChangeInstance.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.singleResCont_ChangeInstance.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.singleResCont_ChangeInstance.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.singleResCont_ChangeInstance.Name = "singleResCont_ChangeInstance";
+            this.singleResCont_ChangeInstance.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.singleResCont_ChangeInstance.Size = new System.Drawing.Size(272, 22);
+            this.singleResCont_ChangeInstance.Text = "Zmień Instancje przedmiotu...";
+            this.singleResCont_ChangeInstance.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.singleResCont_ChangeInstance.Click += new System.EventHandler(this.singleResCont_ChangeInstance_Click);
             // 
             // results_Summary
             // 
@@ -499,7 +530,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.plikToolStripMenuItem,
-            this.orcwarriorToolStripMenuItem});
+            this.orcwarrior2013ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(887, 24);
@@ -533,13 +564,13 @@
             this.zapiszToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.zapiszToolStripMenuItem.Text = "Zapisz...";
             // 
-            // orcwarriorToolStripMenuItem
+            // orcwarrior2013ToolStripMenuItem
             // 
-            this.orcwarriorToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.orcwarriorToolStripMenuItem.Enabled = false;
-            this.orcwarriorToolStripMenuItem.Name = "orcwarriorToolStripMenuItem";
-            this.orcwarriorToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
-            this.orcwarriorToolStripMenuItem.Text = "orcwarrior 2013";
+            this.orcwarrior2013ToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.orcwarrior2013ToolStripMenuItem.Enabled = false;
+            this.orcwarrior2013ToolStripMenuItem.Name = "orcwarrior2013ToolStripMenuItem";
+            this.orcwarrior2013ToolStripMenuItem.Size = new System.Drawing.Size(117, 20);
+            this.orcwarrior2013ToolStripMenuItem.Text = "orcwarrior 2013-14";
             // 
             // selectFilesGeneric
             // 
@@ -556,6 +587,15 @@
             this.btn_SearchForItems.Text = "Szukaj Itemów!";
             this.btn_SearchForItems.UseVisualStyleBackColor = true;
             this.btn_SearchForItems.Click += new System.EventHandler(this.btn_SearchForItems_Click);
+            // 
+            // sResults_labFiltering
+            // 
+            this.sResults_labFiltering.AutoSize = true;
+            this.sResults_labFiltering.Location = new System.Drawing.Point(152, 331);
+            this.sResults_labFiltering.Name = "sResults_labFiltering";
+            this.sResults_labFiltering.Size = new System.Drawing.Size(60, 13);
+            this.sResults_labFiltering.TabIndex = 12;
+            this.sResults_labFiltering.Text = "Filtrowanie:";
             // 
             // Form_Main
             // 
@@ -583,8 +623,10 @@
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tab_srchResults.ResumeLayout(false);
+            this.tab_srchResults.PerformLayout();
             this.singleResultsContext.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -636,11 +678,16 @@
         private System.Windows.Forms.ListBox results_Summary;
         private System.Windows.Forms.ListBox results_Details;
         private System.Windows.Forms.Button btn_showOnMap;
-        private System.Windows.Forms.ToolStripMenuItem orcwarriorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem orcwarrior2013ToolStripMenuItem;
+
         private System.Windows.Forms.ContextMenuStrip singleResultsContext;
         private System.Windows.Forms.ToolStripMenuItem singleResCont_Run;
         private System.Windows.Forms.ToolStripMenuItem singleResCont_MoreInfos;
-        private System.Windows.Forms.ComboBox sResults_Combo_DetailsFilter;
+        private System.Windows.Forms.ToolStripMenuItem singleResCont_Delete;
+        private System.Windows.Forms.ToolStripMenuItem singleResCont_ChangeInstance;
+        
+        private System.Windows.Forms.ComboBox sResults_Combo_resFilter;
+        private System.Windows.Forms.Label sResults_labFiltering;
 
     }
 }

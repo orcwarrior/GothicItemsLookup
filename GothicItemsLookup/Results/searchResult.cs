@@ -10,11 +10,12 @@ namespace GothicItemsLookup.Results
     public class SearchResultSource
     {
         public string file{get; private set;}
-        public int line{get; private set;}
+        public int line { get; private set; } 
+        public long startPos { get; private set; } // new, usable for seeking to file & replacing instances
         public string codeLine{get; private set;}
 
-        public SearchResultSource(string f,int l,string cLine)
-        { file=f; line=l; codeLine=cLine;}
+        public SearchResultSource(string f,int l,long sByte,string cLine)
+        { file = f; line = l; codeLine = cLine; startPos = sByte; }
     }
     abstract public class searchResult
     {
@@ -72,6 +73,7 @@ namespace GothicItemsLookup.Results
                  "Warunki:",
                  "Plik:",
                  "Linia:",
+                 "Bajt-pozycja:",
                  "Podgląd Lini:"});
             values = new List<string>(new string[]
             {instance,
@@ -82,6 +84,7 @@ namespace GothicItemsLookup.Results
              conds,
              src.file,
              src.line.ToString(),
+             src.startPos.ToString(),
              src.codeLine
             });
             return new resultMoreInfos_Form(parameters, values);
@@ -139,6 +142,7 @@ namespace GothicItemsLookup.Results
                  "Pozycja Z:",
                  "Plik:",
                  "Linia:",
+                 "Bajt-pozycja:",
                  "Podgląd Lini:"});
             values = new List<string>(new string[]
             {instance,
@@ -149,6 +153,7 @@ namespace GothicItemsLookup.Results
              pos[2].ToString(),
              src.file,
              src.line.ToString(),
+             src.startPos.ToString(),
              src.codeLine
             });
             return new resultMoreInfos_Form(parameters, values);
@@ -165,7 +170,7 @@ namespace GothicItemsLookup.Results
         }
         static private searchResult _CreatefromZenScanner(zenObjScanner scanner, scannedItem item)
         {
-            SearchResultSource src = new SearchResultSource(scanner.srcFilePath, -1, "");
+            SearchResultSource src = new SearchResultSource(scanner.srcFilePath, -1,item.src.startPos, "");
             string[] posSplit = scanner.objPosStr.Split(' ');
             // Zeby przyspieszyć troche caly proces, parsujemy pozycje dopiero tutaj, gdy jest pewność
             // ze item ma być dodany. (Dzięki Split, pozbywamy sie cyfr za przecinkiem)

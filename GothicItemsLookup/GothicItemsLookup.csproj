@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GothicItemsLookup</RootNamespace>
     <AssemblyName>GothicItemsLookup</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -61,6 +62,8 @@
   <ItemGroup>
     <Compile Include="ColorsConst.cs" />
     <Compile Include="FileEntry.cs" />
+    <Compile Include="Logger\Logger.cs" />
+    <Compile Include="Logger\LogMsg.cs" />
     <Compile Include="Main_Form\Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,10 +86,10 @@
     <Compile Include="mapPreview.Designer.cs">
       <DependentUpon>mapPreview.cs</DependentUpon>
     </Compile>
-    <Compile Include="parsers\genericFileParser.cs" />
-    <Compile Include="parsers\itemFileParser.cs" />
-    <Compile Include="parsers\scriptFileParser.cs" />
-    <Compile Include="parsers\zenFileParser.cs" />
+    <Compile Include="Parsers\genericFileParser.cs" />
+    <Compile Include="Parsers\itemFileParser.cs" />
+    <Compile Include="Parsers\scriptFileParser.cs" />
+    <Compile Include="Parsers\zenFileParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -106,7 +109,17 @@
       <DependentUpon>resultMoreInfos_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Results\findResultType.cs" />
+    <Compile Include="Results\InstanceReplaceWorker.cs" />
+    <Compile Include="Results\resultsManager.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Results\searchResult.cs" />
+    <Compile Include="ChangeInstanceMsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeInstanceMsgBox.Designer.cs">
+      <DependentUpon>ChangeInstanceMsgBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Scanners\searchResultSummary.cs" />
     <Compile Include="Scanners\IItemScaner.cs" />
     <Compile Include="Scanners\scriptScanner.cs" />
@@ -144,6 +157,10 @@
     <EmbeddedResource Include="resultMoreInfos_Form.resx">
       <DependentUpon>resultMoreInfos_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChangeInstanceMsgBox.resx">
+      <DependentUpon>ChangeInstanceMsgBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +192,7 @@
     </None>
     <None Include="Resources\MAP_WORLD.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

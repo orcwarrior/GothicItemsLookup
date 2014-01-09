@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Text.RegularExpressions;
 using GothicItemsLookup.parsers;
 using GothicItemsLookup.Scanners;
+using LogSys;
 namespace GothicItemsLookup
 {
     public partial class Form_Main : Form
@@ -17,20 +18,26 @@ namespace GothicItemsLookup
                 selectFilesGeneric.InitialDirectory = Properties.Settings.Default.path_ItemsScript;
             selectFilesGeneric.Filter = "Gothic Script|*.d";
             selectFilesGeneric.ShowDialog(this);
+            new LogMsg("Items-Scipt: Selecting Items files...", eDebugMsgLvl.INFO);
             foreach (string file in selectFilesGeneric.FileNames)
+            {
                 sItems_ScriptFiles.Items.Add(new FileEntry(file));
+                new LogMsg("Items-Scipt: \tAdded: "+file, eDebugMsgLvl.INFO);
+            }
             if(selectFilesGeneric.FileNames.Length>0) // wybrano coś:
                 Properties.Settings.Default.path_ItemsScript = Utils.ExctractPath(selectFilesGeneric.FileNames[0]);
         }
 
         private void btn_ItemsScriptsClearAll_Click(object sender, EventArgs e)
         {
+            new LogMsg("Items-Scipt: Clear all items files", eDebugMsgLvl.INFO);
             sItems_ScriptFiles.Items.Clear();
         }
 
         ICollection<searchedItem> _foundItems;
         private void sItems_btn_GetItems_Click(object sender, EventArgs e)
         {
+            new LogMsg("Items-Scipt-Extract: Start runing...", eDebugMsgLvl.INFO);
             _resetStatusBars();
             BackgroundWorker bw = new BackgroundWorker();
             itemFileParser.worker = bw;
@@ -43,6 +50,7 @@ namespace GothicItemsLookup
         }
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            new LogMsg("Items-Scipt-Extract: Run compleated, exctracted items: "+_foundItems.Count, eDebugMsgLvl.INFO);
             foreach (searchedItem it in _foundItems)
                 sItems_SelectedItems.Items.Add(it);
             toolStrip_Status.Text = "Gotowy";
@@ -54,6 +62,7 @@ namespace GothicItemsLookup
             toolStrip_Status.Text = itemFileParser.curFile;
             toolStrip_ProgressWhole.Maximum = 100;
             toolStrip_ProgressWhole.Value = e.ProgressPercentage;
+            new LogMsg("Items-Scipt-Extract: Progress changed: "+e.ProgressPercentage, eDebugMsgLvl.INFO);
         }
         private void bw_exctractItems_doWork(object sender, DoWorkEventArgs e)
         {
@@ -64,12 +73,13 @@ namespace GothicItemsLookup
                 filepaths.Add(item.fullpath);
 
             stringFilter sf = new stringFilter("",sItems_inp_FilterItemsInstance.Text,(sItems_CaseSensitive.Checked)? RegexOptions.None : RegexOptions.IgnoreCase);
-
+            new LogMsg("Items-Scipt-Extract: Filter: ["+sf.wildCardPattern+"]", eDebugMsgLvl.INFO);
             _foundItems = itemFileParser.Parse(filepaths, sf);
 
         }
         private void sItems_btn_clearItems_Click(object sender, EventArgs e)
         {
+            new LogMsg("Clear Exctracted items", eDebugMsgLvl.INFO);
             sItems_SelectedItems.Items.Clear();
             _testIfCanRunItemsSearch();
         }

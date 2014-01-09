@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using GothicItemsLookup.parsers;
 using GothicItemsLookup.Scanners;
 using GothicItemsLookup.Scanners.Utils;
+using LogSys;
 namespace GothicItemsLookup
 {
     public partial class Form_Main : Form
@@ -15,6 +16,7 @@ namespace GothicItemsLookup
         // ***************************
         private void sWorld_btn_ClearWorlds_Click(object sender, EventArgs e)
         {
+            new LogMsg("Worlds: Worlds list cleared", eDebugMsgLvl.INFO);
             sWorld_worldsList.Items.Clear();
             _testIfCanRunItemsSearch();
         }
@@ -27,7 +29,10 @@ namespace GothicItemsLookup
             selectFilesGeneric.Filter = "ZEN (NOT BINARY!)|*.ZEN";
             selectFilesGeneric.ShowDialog(this);
             foreach (string file in selectFilesGeneric.FileNames)
+            {
+                new LogMsg("Worlds: Choosen world: "+Utils.ExctractFilename(file), eDebugMsgLvl.INFO);
                 sWorld_worldsList.Items.Add(new FileEntry(file));
+            }
             if (selectFilesGeneric.FileNames.Length > 0) // wybrano coś:
                 Properties.Settings.Default.path_Worlds = Utils.ExctractPath(selectFilesGeneric.FileNames[0]);
             _testIfCanRunItemsSearch();
@@ -51,6 +56,7 @@ namespace GothicItemsLookup
         }
         private void _initialize_itemAddingFunctions()
         {
+            new LogMsg("Initialize item adding functions", eDebugMsgLvl.INFO);
             List<itemAddingFunc> defaultItems = _createDefaultItemsAddingFuncs();
             currentFunctions.AddRange(defaultItems);
             sScripts_list_itemGenerFuncs.Items.AddRange(defaultItems.ToArray());

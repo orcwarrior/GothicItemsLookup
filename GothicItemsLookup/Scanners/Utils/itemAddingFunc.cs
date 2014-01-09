@@ -35,8 +35,12 @@ namespace GothicItemsLookup.Scanners.Utils
         {
             string res = name + "(";
             foreach (eItemFunc_Param p in parameters)
+            {
                 res += p.getName() + ",";
+                
+            }
             res = res.Substring(0, res.Length - 1) + ");";
+            
             return res;
         }
     }

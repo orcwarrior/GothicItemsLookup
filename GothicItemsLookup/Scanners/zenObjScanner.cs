@@ -19,7 +19,7 @@ namespace GothicItemsLookup.Scanners
         public string definitionLine { get; private set; } // for update'ing status
 
         private List<scannedItem> extractedItems;
-        private zenStreamReader zenStream;
+        private zenStreamReader zenStream; private long zenStreamlastPos;
         public zenObjScanner(ref zenStreamReader stream)
         {
             zenStream = stream;
@@ -75,7 +75,7 @@ namespace GothicItemsLookup.Scanners
             if (slf != null) slf.increaseCount(itmCnt);
             else extractedItems.Add(
                 new scannedItem(srcString[0], itmCnt, (objClass == ZENOBJ_Class.oCItem) ? findResultType.ITEM : findResultType.CHEST,
-                                new Results.SearchResultSource(zenStream.filePath, -1, zenStream.lastLine)));
+                                new Results.SearchResultSource(zenStream.filePath, -1, zenStreamlastPos, zenStream.lastLine)));
         }
 
         // Na wejsciu, ta funkcja jest na poczatku lini po pozycji Voba (czyli vobName)
@@ -83,8 +83,8 @@ namespace GothicItemsLookup.Scanners
         {
             const int instanceOffset = 23;
             //stream.BaseStream.Seek(197, System.IO.SeekOrigin.Current);
-            while (!stream.ReadLine().StartsWith("\t\t\titemInst")) ;
-                return stream.lastLine.Substring(instanceOffset);
+            while (!stream.ReadLine().StartsWith("\t\t\titemInst")) { zenStreamlastPos = stream.BaseStream.Position; }
+            return stream.lastLine.Substring(instanceOffset);
         }
         // Na wejsciu, ta funkcja jest na poczatku lini po pozycji Voba (czyli vobName)
         private List<string> _extractContainerItems(ref zenStreamReader stream)
@@ -93,7 +93,7 @@ namespace GothicItemsLookup.Scanners
             const int constainsOffset = 19;
             string packedItems;
             // stream.BaseStream.Seek(625, System.IO.SeekOrigin.Current);
-            while (!stream.ReadLine().StartsWith("\t\t\tcontains")) ;
+            while (!stream.ReadLine().StartsWith("\t\t\tcontains")) { zenStreamlastPos = stream.BaseStream.Position; }
             packedItems = stream.lastLine.Substring(constainsOffset);
             res = new List<string>(packedItems.Split(','));
             return res;

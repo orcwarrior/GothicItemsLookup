@@ -6,6 +6,7 @@ using GothicItemsLookup.streamReaders;
 using System.Text.RegularExpressions;
 using GothicItemsLookup.Scanners;
 using System.Threading;
+using LogSys;
 
 namespace GothicItemsLookup.parsers
 {
@@ -19,6 +20,7 @@ namespace GothicItemsLookup.parsers
 
         static public void Parse(ICollection<string> filePaths)
         {
+            new LogMsg("ZEN-Lookup: Start parsing zen files...", eDebugMsgLvl.INFO);
             progressWhole = new long[] { 0, filePaths.Count };
             parsingFileFinished = true;
             foreach (string file in filePaths)
@@ -26,6 +28,7 @@ namespace GothicItemsLookup.parsers
                 curFile = file;
                 if (_checkIfZenIsValid(file))
                 {
+                    new LogMsg("ZEN-Lookup: parsing zen: "+Utils.ExctractFilename(file), eDebugMsgLvl.INFO);
                     progressStatus = file.Substring(file.LastIndexOf("\\") + 1);
                     while (!parsingFileFinished) Thread.Sleep(200);
                     callProgressUpdate(0, (double)progressWhole[0] / progressWhole[1], progressStatus);
@@ -34,6 +37,7 @@ namespace GothicItemsLookup.parsers
                 }
                 else
                 {
+                    new LogMsg("ZEN-Lookup: Selected zen: "+Utils.ExctractFilename(file)+" is binary!", eDebugMsgLvl.WARN);
                     System.Windows.Forms.MessageBox.Show("Plik: " + file + "\n Jest binarnym plikiem ZEN!\nNależy go zapisac w formacie ASCII!");
                 }
             }
@@ -44,15 +48,18 @@ namespace GothicItemsLookup.parsers
 
         static public void _parseFile(string path)
         {
+            new LogMsg("ZEN-Lookup: \tSingle-ZEN parsing started...", eDebugMsgLvl.INFO);
             zenStreamReader sr = new zenStreamReader(path);
             _findVobTreeStartPosition(ref sr);
+            new LogMsg("ZEN-Lookup: \tFounded vobTree start: "+sr.BaseStream.Position, eDebugMsgLvl.INFO);
             long strLoc = sr.BaseStream.Position;
             sr.DiscardBufferedData();
             progressPart = new long[] { 1000, sr.BaseStream.Length - strLoc };
             callProgressUpdate(progressPart[0] / progressPart[1], progressWhole[0] / progressWhole[1], "...znaleziono początek Vobtree");        
 
             parsingFileFinished = false;
-            long divPosition =  (long)( (sr.BaseStream.Length - strLoc)*1.5 / 5.0) + strLoc;
+            long divPosition = (long)((sr.BaseStream.Length - strLoc) * 1.5 / 5.0) + strLoc;
+            new LogMsg("ZEN-Lookup: \tSelected Threads div pos: " + divPosition + " (1.5/5)", eDebugMsgLvl.INFO);
             Thread t1 = new Thread(() => _parseFileStream1(path, strLoc, divPosition));
             Thread t2 = new Thread(() => _parseFileStream2(path, divPosition, sr.BaseStream.Length));
 
@@ -86,7 +93,7 @@ namespace GothicItemsLookup.parsers
                 if (str1Obj.action == zenObjScanner.ZENOBJ_ACTION.BREAK_LOOP)
                 { sr.BaseStream.Seek(endLoc,System.IO.SeekOrigin.Begin); break; }
                 progressUpdateInterval--;
-                if (progressUpdateInterval == 0)
+                if (progressUpdateInterval == -10)
                 {
                     progressStatus = path.Substring(path.LastIndexOf("\\") + 1) + " " + str1Obj.definitionLine;
                     if (str2Obj != null) progressStatus += " | " + str2Obj.definitionLine;
@@ -95,6 +102,7 @@ namespace GothicItemsLookup.parsers
                     double[] pDone = new double[] { (double)progressPart[0] / progressPart[1], 
                                                     (double)progressWhole[0] / progressWhole[1] };
                     callProgressUpdate(pDone[0], pDone[1], progressStatus);
+                    new LogMsg("ZEN-Lookup: \t#1 Current stream pos: " + sr.BaseStream.Position, eDebugMsgLvl.INFO);
                 }
             }
 
@@ -109,6 +117,7 @@ namespace GothicItemsLookup.parsers
                 if (str2Obj.action == zenObjScanner.ZENOBJ_ACTION.BREAK_LOOP)
                 { str2Progress = endLoc; break; }
                 str2Progress = sr.BaseStream.Position - startLoc;
+                new LogMsg("ZEN-Lookup: \t#2 Current stream pos: " + sr.BaseStream.Position, eDebugMsgLvl.INFO);
             }
 
         }

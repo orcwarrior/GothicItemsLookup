@@ -21,8 +21,9 @@ namespace GothicItemsLookup.streamReaders
         }
         public override string ReadLine()
         {
+            
             string line = base.ReadLine();
-            currentLine++; currentByte += (uint)line.Length;
+            currentLine++; currentByte += base.CurrentEncoding.GetByteCount(line);
             _updateLastLines(line); // robimy to przed usunieciem komentarza (dla podglądu np. dialogów)
             line = _stripLineComments(line);
             bool newBlockCommentState = _checkIfLineStartBlockComment(line);

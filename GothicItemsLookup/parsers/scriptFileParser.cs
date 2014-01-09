@@ -7,6 +7,7 @@ using System.Threading;
 using GothicItemsLookup.streamReaders;
 using GothicItemsLookup.Scanners;
 using GothicItemsLookup.Scanners.Utils;
+using LogSys;
 
 namespace GothicItemsLookup.parsers
 {
@@ -17,19 +18,23 @@ namespace GothicItemsLookup.parsers
         static List<itemAddingFunc> lookupFunctions;
         static public void Parse(string gothic_src, List<itemAddingFunc> itemsAddFuncEnum)
         {
+            new LogMsg("Game scipts: Start parsing...", eDebugMsgLvl.INFO);
             lookupFunctions = itemsAddFuncEnum;
             contentFolder = gothic_src.Substring(0, gothic_src.LastIndexOf("\\")+1);
             StreamReader gothicSrc = new StreamReader(gothic_src);
+            new LogMsg("Game scipts: gothic.src loc: "+gothic_src, eDebugMsgLvl.INFO);
             if (gothicSrc.BaseStream != null)
             {
                 callProgressUpdate(-1,0, "Czytanie pliku gothic.src..");
                 List<string> lines = new List<string>();
                 while (!gothicSrc.EndOfStream)
                     lines.Add(gothicSrc.ReadLine());
-                callProgressUpdate(-1,0.001, "Tworzenie listy skryptów do sprasowania");
+                callProgressUpdate(-1, 0.001, "Tworzenie listy skryptów do sprasowania");
+                new LogMsg("Game scipts: gothic.src entries: "+lines.Count, eDebugMsgLvl.INFO);
 
                 //Generate full filelist: (replace wildcards)
                 scriptsToParse = _generateFullFileList(lines);
+                new LogMsg("Game scipts: gothic.src actual files to parse: " + scriptsToParse.Count, eDebugMsgLvl.INFO);
                 gothicSrc.Close();
                 _LookupForItems(); // Method will done rest of stuff.
             }
@@ -55,7 +60,7 @@ namespace GothicItemsLookup.parsers
                     }
                 }
                 counter++;
-                if (counter % 5 == 4)
+                if (counter % 9 == 4)
                     callProgressUpdate(-1, ((double)counter / lines.Count) * 0.2, "Tworzenie listy skryptów... " + entry + "..." + filesList.Count);
 
             }
@@ -69,18 +74,25 @@ namespace GothicItemsLookup.parsers
             // Lookup for items with 4 Threads, each one will be checking
             // one file at once
             Thread[] lookupThreads = new Thread[4];
+            new LogMsg("Game scipts: Start lookup for items threads", eDebugMsgLvl.INFO);
             for (int i = 0; i < lookupThreads.Length; i++)
             {
                 lookupThreads[i] = new Thread(() => _LookupForItems_Sub());
+                lookupThreads[i].Priority = ThreadPriority.Highest;
                 lookupThreads[i].Start();
             }
             bool someThreadAlive = true;
             while (someThreadAlive)
             {
                 someThreadAlive = false;
+                int aliveCnt = 0;
                 foreach (Thread t in lookupThreads)
+                {
                     someThreadAlive |= t.IsAlive;
+                    aliveCnt++;
+                }
                 Thread.Sleep(250);
+                new LogMsg("Game scipts: Threads check, still alive: " + aliveCnt+"/"+lookupThreads.Length, eDebugMsgLvl.INFO);
             }
 
         }
@@ -88,6 +100,7 @@ namespace GothicItemsLookup.parsers
         static private int processedFilesCnt,orginalScriptsCnt;
         static private void _LookupForItems_Sub()
         {
+            new LogMsg("Game scipts: Start lookup-sub-thread...", eDebugMsgLvl.INFO);
             while(scriptsToParse.Count > 0)
             {
                 string scriptPath;

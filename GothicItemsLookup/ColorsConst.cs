@@ -19,5 +19,7 @@ namespace GothicItemsLookup
        public static Color resultScripts_Trader     = Color.FromArgb(226, 122, 63);
        public static Color resultScripts_Mission    = Color.FromArgb(237, 80, 69);
        public static Color resultScripts_Other      = Color.FromArgb(250, 250, 220);
+
+       public static int[] resultSelected = new int[] { -50, -50, -30 };
     }
 }

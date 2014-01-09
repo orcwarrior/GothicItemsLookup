@@ -25,6 +25,7 @@ namespace GothicItemsLookup.Scanners
         private string funcsRegexLookupStr; // <- skl. regex dla wyszukiwania funkcji dod. itemy
         private IEnumerable<itemAddingFunc> lookupFuncs; // przekazane w konstruktorze
         private string srcFilePath;
+        private long curPosition;
         public scriptScanner(ref scriptStreamReader stream, IEnumerable<itemAddingFunc> _lookupFuncs)
         {
             currentScriptBlocks = new Stack<scriptBlock>();
@@ -40,23 +41,27 @@ namespace GothicItemsLookup.Scanners
 
         private void _performScan(scriptStreamReader stream)
         {
-            string curLine;
+            string curLine; 
             while (!stream.EndOfStream)
             {
+                curPosition = stream.currentByte;//stream.BaseStream.Position;
                 curLine = stream.ReadLine(); curLineOfCode++;
-                _scanDetectCodeBlocks(curLine);
                 _scanDetectBlockClosure(curLine);
-                // if we not already in some script block, then somethings is wrong
-                if (currentScriptBlocks.Count > 0)
+                if (curLine.Length > 15)
                 {
-                    scriptBlock curBlock = currentScriptBlocks.Peek();
-                    if (curBlock.blockType == eBlockType.C_INFO)
+                    _scanDetectCodeBlocks(curLine);
+                    // if we not already in some script block, then somethings is wrong
+                    if (currentScriptBlocks.Count > 0)
                     {
-                        _tryToFindNpcDefinition(curLine);
-                    }
-                    else
-                    {
-                        _scanTryToFindItemAddingFunc(curLine);
+                        scriptBlock curBlock = currentScriptBlocks.Peek();
+                        if (curBlock.blockType == eBlockType.C_INFO)
+                        {
+                            _tryToFindNpcDefinition(curLine);
+                        }
+                        else
+                        {
+                            _scanTryToFindItemAddingFunc(curLine);
+                        }
                     }
                 }
             }
@@ -72,10 +77,12 @@ namespace GothicItemsLookup.Scanners
 
                 itemAddingFunc func = lookupFuncs.Single(f => string.Equals(f.name, m.Groups[1].Value, StringComparison.OrdinalIgnoreCase));
                 if (func != null)
-                {
+                {   
+                    string itemID;
                     string pSlf, pOth;
                     int count;
                     object[] parameters = func.exctractParameters(m.Groups[2].Value);
+                    itemID = parameters[(int)eItemFunc_Param.itemID] as string;
                     pSlf = parameters[(int)eItemFunc_Param.srcNpc] as string;
                     pSlf = (pSlf == null) ? null : (pSlf.Equals("self") ? self : pSlf);
                     pOth = parameters[(int)eItemFunc_Param.dstNpc] as string;
@@ -85,10 +92,10 @@ namespace GothicItemsLookup.Scanners
                     count = hlp.GetValueOrDefault(0);
                     // Touching this piece od code is bad idea!
                     extractedItems.Add(new scriptScannedItem(
-                        /*instance*/parameters[(int)eItemFunc_Param.itemID] as string,
+                        /*instance*/itemID,
                         /*  count */count,
-                        /*findType*/currentScaningItemsType, 
-                        /*findSrc */new SearchResultSource(srcFilePath, curLineOfCode, curLine),
+                        /*findType*/currentScaningItemsType,
+                        /*findSrc */new SearchResultSource(srcFilePath, curLineOfCode, curPosition, curLine),
                         /*  conds */string.Join(" && ", currentConditions.ToArray()),
                         /*  self  */pSlf,
                         /*  other */pOth

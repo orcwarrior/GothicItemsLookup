@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using GothicItemsLookup.Results;
+using LogSys;
 
 namespace GothicItemsLookup
 {
@@ -48,6 +49,8 @@ namespace GothicItemsLookup
                             ((zenRes.type == Scanners.findResultType.ITEM) ? 3 : 0));// zwieksz jeśli jest pojedynczym itemem
                         e.Graphics.DrawEllipse(p, new Rectangle(pos, new Size(2, 2)));
                         e.Graphics.FillEllipse(new SolidBrush(Color.Black), new Rectangle(pos, new Size(2, 2)));
+                        new LogMsg("Map-Preview: new point: ("+pos.X + ", " + pos.Y + ") amount: "+zenRes.amount, eDebugMsgLvl.INFO);
+                        
                         e.Graphics.DrawString("P(" + pos.X + "," + pos.Y + ")", new System.Drawing.Font("Arial", 15), b, new PointF(10, 10));
                     }
                 }
