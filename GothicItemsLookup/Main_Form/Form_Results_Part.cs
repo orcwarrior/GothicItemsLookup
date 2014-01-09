@@ -93,6 +93,7 @@ namespace GothicItemsLookup
         // Context: Usuwanie plików dla znaznaczonych wystąpień przedmiotów
         private void singleResCont_Delete_Click(object sender, EventArgs e)
         {
+            if (results_Details.SelectedItems == null) return;
             new LogMsg("Detail Menu-Context: Opening Delete sources form...", eDebugMsgLvl.INFO);
             if (MessageBox.Show("Czy napewno usunąć zaznaczone pliki?", "Potwierdzenie usunięcia",MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
                 return;

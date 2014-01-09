@@ -27,7 +27,10 @@ namespace GothicItemsLookup.Results
                 kvp.Value.Sort();
                 //do actual job: using (FileStream stream = File.OpenRead("C:\\file1.txt"))
                 StreamReader reader = new StreamReader(kvp.Key);
-                StreamWriter writer = new StreamWriter(kvp.Key + ".bak",false, reader.CurrentEncoding);
+                // FIX: Produced files were in UTF8 format (dunno why) when input script files
+                // was 1252 (ANSI) so they're probably System-Default coded, anyways Gothic parser
+                // don't like UTF8 encoding (error when parsing)
+                StreamWriter writer = new StreamWriter(kvp.Key + ".bak",false, Encoding.Default);
                 const int maxBytes = 1024;
                 int readCnt = maxBytes;
                 char[] buffer = new char[readCnt];

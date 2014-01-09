@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogSys;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,10 +16,12 @@ namespace GothicItemsLookup.Results
     {
         static public void deleteResultsFiles(ListBox.SelectedObjectCollection inResults)
         {
+            if (inResults == null) return;
             foreach (searchResult res in inResults)
             {
                 try
                 {
+                    new LogMsg("Usuwanie pliku: " + res.src.file, eDebugMsgLvl.INFO);
                     System.IO.File.Delete(res.src.file);
                     inResults.Remove(res);
                 }

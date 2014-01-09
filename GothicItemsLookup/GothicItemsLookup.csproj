@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GothicItemsLookup</RootNamespace>
     <AssemblyName>GothicItemsLookup</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -108,6 +108,7 @@
     <Compile Include="resultMoreInfos_Form.Designer.cs">
       <DependentUpon>resultMoreInfos_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Results\DebugMsg.cs" />
     <Compile Include="Results\findResultType.cs" />
     <Compile Include="Results\InstanceReplaceWorker.cs" />
     <Compile Include="Results\resultsManager.cs">
