@@ -66,6 +66,7 @@ namespace LogSys
         // Private 
         private void _pushMsgQueueToStream()
         {
+            _outStream.Flush();
             while(_msgQueue.Count>0)
                 _outStream.WriteLine(_msgQueue.Dequeue());
         }

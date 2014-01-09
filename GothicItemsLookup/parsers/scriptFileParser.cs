@@ -60,7 +60,7 @@ namespace GothicItemsLookup.parsers
                     }
                 }
                 counter++;
-                if (counter % 9 == 4)
+                if (counter % 8 == 7)
                     callProgressUpdate(-1, ((double)counter / lines.Count) * 0.2, "Tworzenie listy skryptów... " + entry + "..." + filesList.Count);
 
             }
@@ -116,7 +116,7 @@ namespace GothicItemsLookup.parsers
                 new scriptScanner(ref script, lookupFunctions);
                 // Update progress:
                 processedFilesCnt++;
-                if (processedFilesCnt % 10 == 0)
+                if (processedFilesCnt % 7 == 0)
                     callProgressUpdate(-1, 0.2 + 0.8 * ((double)processedFilesCnt) / orginalScriptsCnt,
                         "...Parsowanie: " + scriptPath);
             }

@@ -51,14 +51,12 @@ namespace GothicItemsLookup
             {
                 updateProgress del = genericProgressUpdateHandl;
                 this.Invoke(del, new object[] { progrPartial, progrWhole, statusMSG });
-                new LogMsg("Generic Progress Update -> need invoke", eDebugMsgLvl.INFO);
                 return; // <- break b4 disaster o,o
             }
 
             if (statusMSG != null)
             {
                 toolStrip_Status.Text = statusMSG;
-                new LogMsg("Generic Progress Update -> status: " + statusMSG, eDebugMsgLvl.INFO);
             }
             if (progrWhole < 0 || progrWhole > 1.0) toolStrip_ProgressWhole.Visible = false;
             else
